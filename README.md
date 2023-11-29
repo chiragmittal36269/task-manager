@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+## For Running the project we need to follow these steps:-
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Step 1: Open terminal and navigate to your project directory
 
-## Available Scripts
+### Navigate to the project directory using the 'cd' command
 
-In the project directory, you can run:
+### Step 1.1: Install Node.js modules (if not already installed)
 
-### `npm start`
+### This command installs the necessary dependencies specified in your package.json file
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+npm install
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Step 2: After the installation is complete, start the React application
 
-### `npm test`
+### Start the React application using the following command
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+npm start
 
-### `npm run build`
+### The 'npm start' command initiates the development server, converts React components to HTML,
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### and opens the application in your default web browser.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Note: Make sure you have Node.js and npm (Node Package Manager) installed on your system before running these commands.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### You can install them from https://nodejs.org/
 
-### `npm run eject`
+### After executing these steps, you should see your React application running in your browser.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Task Management Application
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Project Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The project follows a standard React project structure:
 
-## Learn More
+-   **src**: Contains the source code of the React application.
+    -   **Components**: Individual React components (`AddTask.js`, `EditTask.js`, `Navbar.js`, `TaskList.js`).
+    -   **styles.css**: Global styles for the application.
+    -   **App.js**: Main component orchestrating routing and state management.
+-   **public**: Holds static assets and the `index.html` file where the React app is mounted.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Design Choices
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### State Management
 
-### Code Splitting
+-   React Hooks (`useState`, `useEffect`) are used for component state management.
+-   Local Storage is employed for persisting task data to ensure persistence after a page refresh.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Routing
 
-### Analyzing the Bundle Size
+-   The application utilizes the `react-router-dom` library for routing.
+-   Navigation links are provided through the `Navbar` component, with routing handled in `App.js`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Task Management
 
-### Making a Progressive Web App
+-   Tasks are represented as objects with properties such as `id`, `name`, `description`, `priority`, and `completed`.
+-   Components like `AddTask`, `EditTask`, and `TaskList` handle various aspects of task management.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Additional Features
 
-### Advanced Configuration
+-   **Task Prioritization**: Users can assign priorities to tasks (Low, Medium, High).
+-   **Task Completion**: Tasks can be marked as completed, updating their visual appearance.
+-   **Editing Tasks**: Users can edit existing tasks, including modifying their name, description, and priority.
+-   **Deletion**: Tasks can be deleted individually.
+-   **Confirmation Modal**: Implemented a custom confirmation modal in the `EditTask` component to confirm canceling changes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Running the Project
 
-### Deployment
+To run the project:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Open your terminal and navigate to the project directory.
+2. Run `npm install` to install required Node modules.
+3. Execute `npm start` to start the development server and open the application in your default web browser.
 
-### `npm run build` fails to minify
+## Future Enhancements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   User authentication for personalized task management.
+-   Advanced styling and animations for an improved user experience.
+-   Integration with backend services for cloud-based task storage and collaboration.

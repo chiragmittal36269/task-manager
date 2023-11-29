@@ -1,15 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <div
-            style={{
-                display: "flex",
-                gap: "30px",
-            }}>
-            <Link to="/">Task List</Link>
-            <Link to="/add">Add Task</Link>
+        <div className="navbar">
+            <NavLink to="/">Task List</NavLink>
+            <NavLink to="/add">Add Task</NavLink>
         </div>
     );
 };

@@ -5,6 +5,7 @@ const EditTask = ({ task, onSaveTask }) => {
     const navigate = useNavigate();
 
     const [editedTask, setEditedTask] = useState(task);
+    const [showConfirmModal, setShowConfirmModal] = useState(false);
 
     // function to handle input change
     const handleInputChange = (e) => {
@@ -19,15 +20,32 @@ const EditTask = ({ task, onSaveTask }) => {
         navigate("/");
     };
 
+    // const onCancel = () => {
+    //     const approve = confirm("are you sure about cancel the changes");
+    //     if (approve) {
+    //         navigate("/");
+    //         return;
+    //     }
+    //     return;
+    // };
+
     const onCancel = () => {
-        const approve = prompt("are you sure about cancel the changes");
+        // Show the confirmation modal
+        setShowConfirmModal(true);
+    };
+
+    const handleConfirmCancel = (approve) => {
+        // Close the confirmation modal
+        setShowConfirmModal(false);
+
         if (approve) {
-            navigate("/add");
+            // If confirmed, navigate to "/"
+            navigate("/");
         }
     };
 
     return (
-        <div>
+        <div className="editTask">
             <h2>Edit Task</h2>
             <form action="" onSubmit={handleSubmit}>
                 <label htmlFor="">
@@ -64,11 +82,34 @@ const EditTask = ({ task, onSaveTask }) => {
                 </label>
                 <br />
                 <br />
-                <button type="submit">Save Task</button>
-                <button type="button" onClick={onCancel}>
-                    Cancel
-                </button>
+                <div className="buttons">
+                    <button type="submit">Save Task</button>
+                    <button type="button" onClick={onCancel}>
+                        Cancel
+                    </button>
+                </div>
             </form>
+
+            {/* Custom confirmation modal */}
+            {showConfirmModal && (
+                <div className="confirm-modal">
+                    <p>Are you sure about canceling the changes?</p>
+                    <div
+                        style={{
+                            display: "flex",
+                            gap: "20px",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}>
+                        <button onClick={() => handleConfirmCancel(true)}>
+                            Yes
+                        </button>
+                        <button onClick={() => handleConfirmCancel(false)}>
+                            No
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

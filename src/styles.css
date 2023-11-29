@@ -2,26 +2,123 @@ body {
     font-family: "Arial", sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
 }
 
 .app {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+    border: 1px solid orange;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.navbar .active {
+    background-color: #212121;
+    color: whitesmoke;
+}
+
+.taskList {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 ul {
     list-style: none;
     padding: 0;
+    width: 100%;
 }
 
 li {
     margin-bottom: 10px;
+    text-decoration: none;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-button {
-    margin-left: 10px;
+li button {
+    width: 12%;
+}
+
+li p {
+    width: 10%;
+    text-align: center;
+}
+
+li input {
+    width: 3%;
+}
+
+.addTask {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.addTask form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.addTask form label {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    gap: 10px;
+}
+
+.editTask {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.editTask form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.editTask form label {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    gap: 10px;
+}
+
+.editTask form .buttons {
+    display: flex;
+    gap: 20px;
 }

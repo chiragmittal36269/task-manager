@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import AddTask from "./Components/AddTask";
 import EditTask from "./Components/EditTask";
 import Navbar from "./Components/Navbar";
 import TaskList from "./Components/TaskList";
+import "./styles.css";
 
 const App = () => {
     // State to manage tasks
@@ -19,7 +20,6 @@ const App = () => {
 
     // function to handle updating an existing task
     const handleSaveTask = (editingTask) => {
-        const tasks = JSON.parse(localStorage.getItem("tasks"));
         const updatedTasks = tasks.map((task) =>
             task.id === editingTask.id ? { ...editingTask } : task
         );
@@ -27,8 +27,13 @@ const App = () => {
         localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     };
 
+    useEffect(() => {
+        let data = JSON.parse(localStorage.getItem("tasks")) || [];
+        setTasks(data);
+    }, []);
+
     return (
-        <div>
+        <div className="app">
             <Navbar />
             <Routes>
                 <Route

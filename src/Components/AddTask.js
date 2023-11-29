@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AddTask = ({ onAddTask }) => {
+    const navigate = useNavigate();
+
     // state to manage form input
     const [task, setTask] = useState({
         name: "",
@@ -25,10 +28,11 @@ const AddTask = ({ onAddTask }) => {
         const newTask = { ...task, id: Date.now(), completed: false };
         onAddTask(newTask);
         setTask({ name: "", description: "", priority: "low" });
+        navigate("/");
     };
 
     return (
-        <div>
+        <div className="addTask">
             <h2>Add Task</h2>
             <form action="" onSubmit={handleSubmit}>
                 <label htmlFor="">

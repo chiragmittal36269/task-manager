@@ -42,7 +42,7 @@ const TaskList = ({ setEditTask }) => {
     };
 
     return (
-        <div>
+        <div className="taskList">
             <h2>Task List</h2>
             <ul>
                 {tasks !== null ? (
@@ -59,7 +59,9 @@ const TaskList = ({ setEditTask }) => {
                                 checked={task.completed}
                                 onChange={() => handleCheckboxChange(task.id)}
                             />
-                            {task.name} - {task.priority}
+                            <p>{task.name}</p>
+                            <p>-</p>
+                            <p>{task.priority}</p>
                             <button onClick={() => handleDeleteClick(task.id)}>
                                 Delete Task
                             </button>
@@ -72,7 +74,7 @@ const TaskList = ({ setEditTask }) => {
                         </li>
                     ))
                 ) : (
-                    <p>Please enter a task using Add Task button.</p>
+                    <p>Please add a task using Add Task button.</p>
                 )}
             </ul>
         </div>
