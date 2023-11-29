@@ -1,9 +1,11 @@
+/* Reset some default styles and set the font family */
 body {
     font-family: "Arial", sans-serif;
     margin: 0;
     padding: 0;
 }
 
+/* Styles for the main application container */
 .app {
     max-width: 800px;
     margin: 20px auto;
@@ -15,12 +17,14 @@ body {
     align-items: center;
 }
 
+/* Styles for the navigation bar */
 .navbar {
     display: flex;
     justify-content: center;
     gap: 50px;
 }
 
+/* Styles for navigation links in the navbar */
 .navbar a {
     text-decoration: none;
     color: black;
@@ -29,11 +33,13 @@ body {
     border-radius: 10px;
 }
 
+/* Styles for the active navigation link */
 .navbar .active {
     background-color: #212121;
     color: whitesmoke;
 }
 
+/* Styles for the task list container */
 .taskList {
     width: 100%;
     display: flex;
@@ -42,12 +48,14 @@ body {
     flex-direction: column;
 }
 
+/* Styles for the unordered list within the task list */
 ul {
     list-style: none;
     padding: 0;
     width: 100%;
 }
 
+/* Styles for individual list items in the task list */
 li {
     margin-bottom: 10px;
     text-decoration: none;
@@ -57,19 +65,23 @@ li {
     align-items: center;
 }
 
+/* Styles for buttons within list items */
 li button {
     width: 12%;
 }
 
+/* Styles for paragraphs within list items */
 li p {
     width: 10%;
     text-align: center;
 }
 
+/* Styles for input within list items */
 li input {
     width: 3%;
 }
 
+/* Styles for the Add Task container */
 .addTask {
     display: flex;
     flex-direction: column;
@@ -78,6 +90,7 @@ li input {
     width: 100%;
 }
 
+/* Styles for the form within Add Task container */
 .addTask form {
     display: flex;
     flex-direction: column;
@@ -86,6 +99,7 @@ li input {
     width: 100%;
 }
 
+/* Styles for labels within the Add Task form */
 .addTask form label {
     width: 100%;
     display: flex;
@@ -94,6 +108,7 @@ li input {
     gap: 10px;
 }
 
+/* Styles for the Edit Task container */
 .editTask {
     display: flex;
     flex-direction: column;
@@ -102,6 +117,7 @@ li input {
     width: 100%;
 }
 
+/* Styles for the form within Edit Task container */
 .editTask form {
     display: flex;
     flex-direction: column;
@@ -110,6 +126,7 @@ li input {
     width: 100%;
 }
 
+/* Styles for labels within the Edit Task form */
 .editTask form label {
     width: 100%;
     display: flex;
@@ -118,6 +135,7 @@ li input {
     gap: 10px;
 }
 
+/* Styles for buttons within the Edit Task form */
 .editTask form .buttons {
     display: flex;
     gap: 20px;

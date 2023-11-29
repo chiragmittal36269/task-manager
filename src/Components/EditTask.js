@@ -1,39 +1,33 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const EditTask = ({ task, onSaveTask }) => {
+const EditTask = ({ editTask, onSaveTask }) => {
     const navigate = useNavigate();
 
-    const [editedTask, setEditedTask] = useState(task);
+    // State to manage edited task and confirmation modal visibility
+    const [editedTask, setEditedTask] = useState(editTask);
     const [showConfirmModal, setShowConfirmModal] = useState(false);
 
-    // function to handle input change
+    // Function to handle input change
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setEditedTask((prevTask) => ({ ...prevTask, [name]: value }));
     };
 
-    // function to handle form submission
+    // Function to handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
         onSaveTask(editedTask);
         navigate("/");
     };
 
-    // const onCancel = () => {
-    //     const approve = confirm("are you sure about cancel the changes");
-    //     if (approve) {
-    //         navigate("/");
-    //         return;
-    //     }
-    //     return;
-    // };
-
+    // Function to handle cancellation
     const onCancel = () => {
         // Show the confirmation modal
         setShowConfirmModal(true);
     };
 
+    // Function to handle confirmation modal
     const handleConfirmCancel = (approve) => {
         // Close the confirmation modal
         setShowConfirmModal(false);
@@ -48,8 +42,9 @@ const EditTask = ({ task, onSaveTask }) => {
         <div className="editTask">
             <h2>Edit Task</h2>
             <form action="" onSubmit={handleSubmit}>
-                <label htmlFor="">
-                    Task Name:{" "}
+                {/* Task Name Input */}
+                <label htmlFor="name">
+                    Task Name:
                     <input
                         type="text"
                         name="name"
@@ -60,8 +55,10 @@ const EditTask = ({ task, onSaveTask }) => {
                 </label>
                 <br />
                 <br />
-                <label htmlFor="">
-                    Task Description:{" "}
+
+                {/* Task Description Textarea */}
+                <label htmlFor="description">
+                    Task Description:
                     <textarea
                         name="description"
                         value={editedTask.description}
@@ -69,7 +66,9 @@ const EditTask = ({ task, onSaveTask }) => {
                 </label>
                 <br />
                 <br />
-                <label htmlFor="">
+
+                {/* Priority Dropdown */}
+                <label htmlFor="priority">
                     Priority:
                     <select
                         name="priority"
@@ -82,6 +81,8 @@ const EditTask = ({ task, onSaveTask }) => {
                 </label>
                 <br />
                 <br />
+
+                {/* Save and Cancel Buttons */}
                 <div className="buttons">
                     <button type="submit">Save Task</button>
                     <button type="button" onClick={onCancel}>
@@ -94,13 +95,7 @@ const EditTask = ({ task, onSaveTask }) => {
             {showConfirmModal && (
                 <div className="confirm-modal">
                     <p>Are you sure about canceling the changes?</p>
-                    <div
-                        style={{
-                            display: "flex",
-                            gap: "20px",
-                            justifyContent: "center",
-                            alignItems: "center",
-                        }}>
+                    <div className="button-group">
                         <button onClick={() => handleConfirmCancel(true)}>
                             Yes
                         </button>

@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const TaskList = ({ setEditTask }) => {
+const TaskList = ({ setEditTask, tasks, setTasks }) => {
     const navigate = useNavigate();
 
-    //state to manage Tasks
-    const [tasks, setTasks] = useState([]);
-
-    // fetch tasks from localStorage
+    // Fetch tasks from localStorage on component mount
     useEffect(() => {
-        const storedTasks = JSON.parse(localStorage.getItem("tasks")) || null;
+        const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
         setTasks(storedTasks);
     }, []);
 
-    // function to handle task completion
+    // Function to handle task completion
     const handleCheckboxChange = (taskId) => {
         const updatedTasks = tasks.map((task) =>
             task.id === taskId ? { ...task, completed: !task.completed } : task
@@ -22,30 +19,31 @@ const TaskList = ({ setEditTask }) => {
         saveTasksToLocalStorage(updatedTasks);
     };
 
-    // function to handle task deletion
+    // Function to handle task deletion
     const handleDeleteClick = (taskId) => {
         const updatedTasks = tasks.filter((task) => task.id !== taskId);
-        updatedTasks.length === 0 ? setTasks(null) : setTasks(updatedTasks);
+        setTasks(updatedTasks.length === 0 ? [] : updatedTasks);
         saveTasksToLocalStorage(updatedTasks);
     };
 
-    // function to save tasks on localStorage
+    // Function to save tasks to localStorage
     const saveTasksToLocalStorage = (taskData) => {
         taskData.length === 0
             ? localStorage.removeItem("tasks")
             : localStorage.setItem("tasks", JSON.stringify(taskData));
     };
 
+    // Function to handle editing a task
     const handleEditTask = (task) => {
-        navigate("/edit");
         setEditTask(task);
+        navigate("/edit");
     };
 
     return (
         <div className="taskList">
             <h2>Task List</h2>
             <ul>
-                {tasks !== null ? (
+                {tasks.length !== 0 ? (
                     tasks.map((task) => (
                         <li
                             key={task.id}

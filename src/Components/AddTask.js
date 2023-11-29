@@ -4,30 +4,34 @@ import { useNavigate } from "react-router-dom";
 const AddTask = ({ onAddTask }) => {
     const navigate = useNavigate();
 
-    // state to manage form input
+    // State to manage form input
     const [task, setTask] = useState({
         name: "",
         description: "",
         priority: "low",
     });
 
-    // function to handle input change
+    // Function to handle input change
     const handleInputChange = (e) => {
-        // console.log(e.target.name);
-        // console.log(e.target.value);
-        // destructuring the name and value
         const { name, value } = e.target;
+        // Update the task state with the new input value
         setTask((prevTask) => ({ ...prevTask, [name]: value }));
     };
 
-    // function to handle form submission
+    // Function to handle form submission
     const handleSubmit = (e) => {
-        // skip the prevent behaviour of the form
         e.preventDefault();
 
+        // Create a new task with unique ID and default completion status
         const newTask = { ...task, id: Date.now(), completed: false };
+
+        // Call the onAddTask function passed from the parent component
         onAddTask(newTask);
+
+        // Clear the form fields after submitting the task
         setTask({ name: "", description: "", priority: "low" });
+
+        // Navigate back to the home page after adding the task
         navigate("/");
     };
 
@@ -35,8 +39,9 @@ const AddTask = ({ onAddTask }) => {
         <div className="addTask">
             <h2>Add Task</h2>
             <form action="" onSubmit={handleSubmit}>
-                <label htmlFor="">
-                    Task Name:{" "}
+                {/* Task Name Input */}
+                <label htmlFor="name">
+                    Task Name:
                     <input
                         type="text"
                         name="name"
@@ -49,8 +54,9 @@ const AddTask = ({ onAddTask }) => {
                 <br />
                 <br />
 
-                <label htmlFor="">
-                    Task Description:{" "}
+                {/* Task Description Textarea */}
+                <label htmlFor="description">
+                    Task Description:
                     <textarea
                         name="description"
                         value={task.description}
@@ -60,7 +66,8 @@ const AddTask = ({ onAddTask }) => {
                 <br />
                 <br />
 
-                <label htmlFor="">
+                {/* Task Priority Dropdown */}
+                <label htmlFor="priority">
                     Task Priority:
                     <select
                         name="priority"
@@ -71,8 +78,11 @@ const AddTask = ({ onAddTask }) => {
                         <option value="high">High Priority</option>
                     </select>
                 </label>
+
                 <br />
                 <br />
+
+                {/* Submit Button */}
                 <button type="submit">Add Task</button>
             </form>
         </div>
